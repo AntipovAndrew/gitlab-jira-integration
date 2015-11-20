@@ -48,11 +48,7 @@ public class HookResource {
             metricRegistry.counter(principal.getName()).inc();
 
             log.info("Push hook received > {}", event);
-            switch (event.getType()) {
-                case PUSH:
-                    service.performPushEvent(event);
-                    break;
-            }
+            service.performPushEvent(event);
         }).start();
     }
 

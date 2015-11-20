@@ -43,7 +43,7 @@ public class HookResourceTestIT {
         Response response = resources.client().target("/hook")
                 .queryParam("token", Base64.getEncoder().encodeToString(String.format("%s:%s", "test-svc", PASSWORD).getBytes()))
                 .request()
-                .post(Entity.json(new Event(Event.Type.PUSH)));
+                .post(Entity.json(new Event()));
 
         assertThat(response).isNotNull();
         assertThat(response.getStatus()).isEqualTo(204);

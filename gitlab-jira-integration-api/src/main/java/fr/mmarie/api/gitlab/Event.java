@@ -2,14 +2,8 @@ package fr.mmarie.api.gitlab;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.annotations.VisibleForTesting;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -17,21 +11,8 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(of = "type")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Event {
-
-    public enum Type {
-        PUSH,
-        TAG_PUSH,
-        ISSUE,
-        NOTE,
-        MERGE_REQUEST
-    }
-
-    @JsonProperty("object_kind")
-    @NotNull
-    private Type type;
 
     @JsonProperty("before")
     private String before;
@@ -65,9 +46,4 @@ public class Event {
 
     @JsonProperty("total_commits_count")
     private Long totalCommitsCount;
-
-    @VisibleForTesting
-    public Event(Type type) {
-        this.type = type;
-    }
 }

@@ -179,7 +179,6 @@ public class IntegrationServiceTest {
         long userId = 1L;
         String repositoryName = "test-repo";
         Event event = Event.builder()
-                .type(Event.Type.PUSH)
                 .userId(userId)
                 .repository(Repository.builder().name(repositoryName).build())
                 .commits(Arrays.asList(commit1, commit2))
@@ -198,7 +197,6 @@ public class IntegrationServiceTest {
 
         long userId = 1L;
         Event event = Event.builder()
-                .type(Event.Type.PUSH)
                 .userId(userId)
                 .repository(Repository.builder().name(repositoryName).build())
                 .commits(Collections.emptyList())
